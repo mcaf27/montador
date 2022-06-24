@@ -1,4 +1,4 @@
-#include "Memory.hpp"
+#include "../include/Memory.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -10,7 +10,6 @@ using namespace std;
 int main(int argc, char * argv []) {
 
   ifstream arq;
-
   arq.open(argv[1]);
 
   string line;
@@ -52,7 +51,7 @@ int main(int argc, char * argv []) {
   mem->print_insts();
   cout << "---" << endl;
   mem->print_labels();
-
+  mem->gera_saida();
   delete mem;
   arq.close();
 
