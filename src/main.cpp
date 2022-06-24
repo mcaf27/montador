@@ -20,6 +20,7 @@ int main(int argc, char * argv []) {
   string in;
   int ilc = 0;
 
+  // primeira passada
   while (getline(arq, in)) {
     in = in.substr(0, in.find(';'));
 
@@ -31,10 +32,10 @@ int main(int argc, char * argv []) {
       ilc++;
       string op;
 
-      if (com != "HALT" && com != "RET") {
+      if (com != "HALT" && com != "RET" && com != "WORD") {
         ss >> op;
         ilc++;
-      }
+      } else if (com == "WORD") ss >> op;
 
       mem->adicionar_instrucao(com, op);
       
@@ -43,15 +44,36 @@ int main(int argc, char * argv []) {
       string label = in.substr(0, in.find(':'));
       mem->adicionar_label(label, ilc);
 
-      ilc++;
+      // ilc++;
 
+      string com = "";
+      string op = "";
+
+      istringstream ss(in.substr(in.find(':') + 1));
+      ss >> com;
+      ilc++;
+      if (com != "HALT" && com != "RET" && com != "WORD") {
+        ss >> op;
+        ilc++;
+      } else if (com == "WORD") {
+        // cout << "word" << endl;
+        ss >> op;
+      }
+
+      
+      mem->adicionar_instrucao(com, op);
     }
   }
 
-  mem->print_insts();
-  cout << "---" << endl;
-  mem->print_labels();
+
+  arq.clear();
+
+
+  // mem->print_insts();
+  // cout << "---" << endl;
+  // mem->print_labels();
   mem->gera_saida();
+
   delete mem;
   arq.close();
 

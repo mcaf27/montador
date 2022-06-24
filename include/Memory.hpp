@@ -17,9 +17,11 @@ class Memory {
 
     void adicionar_instrucao(std::string com, std::string op);
     void adicionar_label(std::string name, int posi);
-    void busca_instrucao(std::string com)
+    void busca_instrucao(std::string com);
     void print_insts();
     void print_labels();
+
+    int tamanho();
 
     void ler_entrada(std::string e);
     void gera_saida();
