@@ -23,7 +23,6 @@ class Memory {
 
     int tamanho();
 
-    void ler_entrada(std::string e);
     void gera_saida();
 };
 

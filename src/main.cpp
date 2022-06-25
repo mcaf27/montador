@@ -2,7 +2,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <cstring>
 #include <sstream>
 
 using namespace std;
@@ -44,8 +43,6 @@ int main(int argc, char * argv []) {
       string label = in.substr(0, in.find(':'));
       mem->adicionar_label(label, ilc);
 
-      // ilc++;
-
       string com = "";
       string op = "";
 
@@ -56,7 +53,6 @@ int main(int argc, char * argv []) {
         ss >> op;
         ilc++;
       } else if (com == "WORD") {
-        // cout << "word" << endl;
         ss >> op;
       }
 
@@ -64,10 +60,6 @@ int main(int argc, char * argv []) {
       mem->adicionar_instrucao(com, op);
     }
   }
-
-
-  arq.clear();
-
 
   // mem->print_insts();
   // cout << "---" << endl;
